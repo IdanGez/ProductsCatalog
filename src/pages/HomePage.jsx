@@ -2,6 +2,7 @@ import React, {useState, useEffect, useLayoutEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
 import {CrudlService} from '../services/crudl.service.js';
+import {GenderFilter} from '../cmps/GenderFilter.jsx';
 import {loadItems, addItems, updateItems, removeItems} from '../store/item.action.js';
 
 export function HomePage() {
@@ -10,6 +11,10 @@ export function HomePage() {
 
 	useEffect(() => {
 		getItems();
+	}, []);
+
+	useEffect(async () => {
+		await getItems();
 	}, []);
 
 	const getItems = async () => {
@@ -21,6 +26,7 @@ export function HomePage() {
 	return (
 		<section className='home-page'>
 			<h1 className='hero-title'>HomePage</h1>
+			<GenderFilter />
 			<section className='grid-list flex-center'>
 				{stores &&
 					stores.map((store) => {
@@ -31,8 +37,9 @@ export function HomePage() {
 										<img className='product-img' src={product.ProductImage} alt='' />
 									</div>
 									<div className='product-details'>
-										<h5 className='store-name'> {store.StoreName}</h5>
-										<h5 className='product-price'> {product.ProductTitle}</h5>
+										<h2 className='store-name'> {store.StoreName}</h2>
+										<h3 className='product-price'> {product.PriceLabel}</h3>
+										<h3 className='product-name'> {product.ProductTitle}</h3>
 									</div>
 								</div>
 							);
