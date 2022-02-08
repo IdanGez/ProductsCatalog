@@ -27,7 +27,7 @@ export const CrudlService = {
 // ];
 
 async function query() {
-  console.log(Products.Stores);
+  // console.log(Products);
   // let boards = await storageService.query('board');
   // const boards = await httpService.get(`board`);
   // console.log(boards);

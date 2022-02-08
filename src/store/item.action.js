@@ -2,12 +2,14 @@
 import { CrudlService } from '../services/crudl.service.js';
 
 export function loadItems() {
-  console.log('in action');
+  // console.log('in action');
   return async (dispatch) => {
     try {
-      let items = await CrudlService.query();
-      console.log(items);
-      dispatch({ type: 'SET_ITEMS', items });
+      let data = await CrudlService.query();
+     let {Stores} = data
+     let stores = Stores
+    //  console.log(Stores)
+      dispatch({ type: 'SET_STORES', stores });
       // dispatch({ type: 'SET_CURRITEM', item });
     } catch (err) {
       console.log('could not get items ', err);

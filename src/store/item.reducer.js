@@ -1,7 +1,7 @@
 // in the start of project change all the item to the word we working on
 
 const initialState = {
-  items: [],
+  stores: [],
   currItem: null,
 };
 
@@ -11,6 +11,11 @@ export function itemReducer(state = initialState, action) {
     case 'SET_ITEMS':
       // console.log(action)
       newState = { ...state, items: action.items };
+
+      break;
+    case 'SET_STORES':
+      // console.log(action)
+      newState = { ...state, stores: action.stores };
 
       break;
     case 'UPDATE_ITEMS':

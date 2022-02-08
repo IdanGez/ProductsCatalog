@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { CrudlService } from '../services/crudl.service.js';
@@ -11,28 +11,38 @@ import {
 
 export function HomePage() {
   const dispatch = useDispatch();
-  const { items } = useSelector((state) => ({ items: state.itemModule.items }));
+  const { stores } = useSelector((state) => ({ stores: state.itemModule.stores }));
 
-  useEffect(() => {
-    getItems();
+
+  useEffect(async () => {
+    await getItems();
+
   }, []);
 
   const getItems = async () => {
     // console.log('you are in load product in home page ');
     dispatch(loadItems());
   };
-  if (!items.length) return <div>Loading...</div>;
-  console.log(items)
+  console.log(stores)
+  if (!stores.length) return <div>Loading...</div>;
   return (
     <section className='home-page'>
-      <h1 clasName="hero-title">HomePage</h1>
+      <h1 className="hero-title">HomePage</h1>
       <section className='grid-list flex-center'>
-        {items.Stores.Products.map((product) => {
-          return (<div className='item-preview'>
-            <h2 className='item-name'>Name: {product.Description}</h2>
-            {/* <h3 className='item-age'>Age: {item.age}</h3> */}
-          </div>
-          )
+        {stores && stores.map((store) => {
+          return store.Products.map(product => {
+            return (<div className='product-preview' key={product.ProductId}>
+              <div className="product-img-container">
+                <img className="product-img" src={product.ProductImage} alt=''/>
+              </div>
+              <div className="product-details">
+                <h2 className='store-name'> {store.StoreName}</h2>
+                <h3 className='product-price'> {product.ProductTitle}</h3>
+              </div>
+            </div>
+            )
+
+          })
         })}
       </section>
     </section>
