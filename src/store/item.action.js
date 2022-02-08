@@ -5,7 +5,7 @@ export function loadItems() {
   console.log('in action');
   return async (dispatch) => {
     try {
-      const items = await CrudlService.query();
+      let items = await CrudlService.query();
       console.log(items);
       dispatch({ type: 'SET_ITEMS', items });
       // dispatch({ type: 'SET_CURRITEM', item });

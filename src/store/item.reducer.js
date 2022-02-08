@@ -9,7 +9,8 @@ export function itemReducer(state = initialState, action) {
   let newState = state;
   switch (action.type) {
     case 'SET_ITEMS':
-      newState = { ...state, items: [...action.items] };
+      // console.log(action)
+      newState = { ...state, items: action.items };
 
       break;
     case 'UPDATE_ITEMS':
