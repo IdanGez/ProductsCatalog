@@ -4,7 +4,7 @@ import { loadFromStorage, saveToStorage } from './storage.service.js';
 // import { utilService } from './util.service';
 import { httpService } from './http.service.js';
 
-import Products from '../data/products.json'
+import Data from '../data/products.json'
 
 const STORAGE_KEY_BOARD = 'board';
 
@@ -14,6 +14,8 @@ export const CrudlService = {
   save,
   remove,
   update,
+  sortProducts,
+ 
 };
 
 // If you want to use full crudl with storage use async storage service
@@ -25,7 +27,51 @@ async function query() {
   // const boards = await httpService.get(`board`);
   // console.log(boards);
   // return boards;
-  return Products;
+  return Data;
+}
+
+async function getStores() {
+  let data = await query()
+  let products = []
+  let { Stores } = data
+  let stores = Stores
+  // Stores.map(store => {
+  //   return store.Products.map(product => {
+  //     return products.push(product)
+  //   })
+  // })
+  return stores
+}
+// async function getProducts() {
+//   let data = await query()
+//   let products = []
+//   let { Stores } = data
+//   Stores.map(store => {
+//     return store.Products.map(product => {
+//       return products.push(product)
+//     })
+//   })
+//   return products
+// }
+async function sortProducts(gender = null, priceRange = null) {
+  let stores = await getStores()
+  // if (!gender && !priceRange) return products
+  let tags = []
+  tags.push(gender.value)
+  const filteredProdcuts = []
+  // stores.Products.filter
+  stores.forEach(store => {
+    store.filteredProdcuts = [];
+    store.Products.filter(product => {
+      let currProduct = tags.every(tag => {
+        return product.ProductTags.includes(tag)
+      })
+      if (currProduct) store.filteredProdcuts.push(product)
+      return store
+    })
+  })
+  console.log(stores)
+  return stores
 }
 
 async function getById(boardId) {

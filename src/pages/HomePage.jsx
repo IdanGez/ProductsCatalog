@@ -3,15 +3,16 @@ import {useDispatch, useSelector} from 'react-redux';
 
 import {CrudlService} from '../services/crudl.service.js';
 import {GenderFilter} from '../cmps/GenderFilter.jsx';
+import {PriceRangeFilter} from '../cmps/PriceRangeFilter.jsx';
 import {loadItems, addItems, updateItems, removeItems} from '../store/item.action.js';
 
 export function HomePage() {
 	const dispatch = useDispatch();
 	const {stores} = useSelector((state) => ({stores: state.itemModule.stores}));
 
-	useEffect(() => {
-		getItems();
-	}, []);
+	// useEffect(() => {
+	// 	getItems();
+	// }, []);
 
 	useEffect(async () => {
 		await getItems();
@@ -21,14 +22,14 @@ export function HomePage() {
 		// console.log('you are in load product in home page ');
 		dispatch(loadItems());
 	};
-	console.log(stores);
+	// console.log(stores);
 	if (!stores.length) return <div>Loading...</div>;
 	return (
 		<section className='home-page'>
-			<section className='filters'>
-				<GenderFilter />
-			</section>
-			<main className='app-main grid-list flex-center'>
+			<h1 className='hero-title'>HomePage</h1>
+			<GenderFilter />
+			<PriceRangeFilter />
+			<section className='grid-list flex-center'>
 				{stores &&
 					stores.map((store) => {
 						return store.Products.map((product) => {
