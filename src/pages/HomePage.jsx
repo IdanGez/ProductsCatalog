@@ -33,11 +33,12 @@ export function HomePage() {
           return store.Products.map(product => {
             return (<div className='product-preview' key={product.ProductId}>
               <div className="product-img-container">
-                <img className="product-img" src={product.ProductImage} alt=''/>
+                <img className="product-img" src={product.ProductImage} alt='' />
               </div>
               <div className="product-details">
                 <h2 className='store-name'> {store.StoreName}</h2>
-                <h3 className='product-price'> {product.ProductTitle}</h3>
+                <h3 className='product-price'> ${product.Price}</h3>
+                <h3 className='product-name'> {product.ProductTitle}</h3>
               </div>
             </div>
             )
