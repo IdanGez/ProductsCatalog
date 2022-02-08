@@ -29,7 +29,7 @@ export function HomePage() {
 			<h1 className='hero-title'>HomePage</h1>
 			<GenderFilter />
 			<PriceRangeFilter />
-			<section className='grid-list flex-center'>
+			<main className='grid-list flex-center'>
 				{stores &&
 					stores.map((store) => {
 						return store.Products.map((product) => {
