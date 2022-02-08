@@ -6,15 +6,43 @@ export function loadItems() {
   return async (dispatch) => {
     try {
       let data = await CrudlService.query();
-     let {Stores} = data
-     let stores = Stores
-    //  console.log(Stores)
+      let { Stores } = data
+      let stores = Stores
+      // let products = await CrudlService.getProducts()
+      // console.log (products)
       dispatch({ type: 'SET_STORES', stores });
-      // dispatch({ type: 'SET_CURRITEM', item });
+      // dispatch({ type: 'SET_PRODUCTS', products });
     } catch (err) {
       console.log('could not get items ', err);
     }
   };
+}
+
+export function sortByGender(gender, priceRange) {
+  // console.log(gender)
+  // console.log(priceRange)
+  return (dispatch) => {
+    try {
+      const filteredProdcuts = CrudlService.sortProducts(gender, priceRange)
+      dispatch({ type: 'SET_GENDER', gender })
+      dispatch({ type: 'SET_PRODUCTS', products: filteredProdcuts })
+    }
+    catch {
+      console.log('cannot filter products')
+    }
+  }
+}
+export function sortPriceRange(gender, priceRange) {
+  return (dispatch) => {
+    try {
+      const sortedProducts = CrudlService.sortProducts(gender, priceRange)
+      dispatch({ type: 'SET_PRICE_RANGE', priceRange })
+    }
+    catch {
+      console.log('cannot filter products')
+    }
+  }
+
 }
 
 export function addItem(item) {

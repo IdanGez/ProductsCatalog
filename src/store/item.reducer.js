@@ -2,21 +2,29 @@
 
 const initialState = {
   stores: [],
-  currItem: null,
+  products: [],
+  gender: { value: 1, label: 'BOTH' },
+  priceRange: null,
 };
 
 export function itemReducer(state = initialState, action) {
   let newState = state;
   switch (action.type) {
     case 'SET_ITEMS':
-      // console.log(action)
       newState = { ...state, items: action.items };
-
       break;
     case 'SET_STORES':
-      // console.log(action)
       newState = { ...state, stores: action.stores };
-
+      break;
+    case 'SET_GENDER':
+      newState = { ...state, gender: action.gender };
+      break;
+    // case 'SET_PRODUCTS':
+    //   console.log(action)
+    //   newState = { ...state, products: action.products };
+    //   break;
+    case 'SET_PRICE_RANGE':
+      newState = { ...state, priceRange: action.priceRange };
       break;
     case 'UPDATE_ITEMS':
       newState = {
