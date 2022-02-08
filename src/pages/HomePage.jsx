@@ -31,8 +31,8 @@ export function HomePage() {
 										<img className='product-img' src={product.ProductImage} alt='' />
 									</div>
 									<div className='product-details'>
-										<h2 className='store-name'> {store.StoreName}</h2>
-										<h3 className='product-price'> {product.ProductTitle}</h3>
+										<h5 className='store-name'> {store.StoreName}</h5>
+										<h5 className='product-price'> {product.ProductTitle}</h5>
 									</div>
 								</div>
 							);
