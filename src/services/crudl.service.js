@@ -19,13 +19,6 @@ export const CrudlService = {
 // If you want to use full crudl with storage use async storage service
 // If you want to use only load from storage and save to storage use storage service
 
-// const testObjects = [
-//   { name: 'Idan', age: 35 },
-//   { name: 'Inbar', age: 33 },
-//   { name: 'Tom', age: 2.5 },
-
-// ];
-
 async function query() {
   // console.log(Products);
   // let boards = await storageService.query('board');

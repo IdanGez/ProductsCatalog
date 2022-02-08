@@ -2,6 +2,7 @@ import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { CrudlService } from '../services/crudl.service.js';
+import { GenderFilter } from '../cmps/GenderFilter.jsx';
 import {
   loadItems,
   addItems,
@@ -28,6 +29,7 @@ export function HomePage() {
   return (
     <section className='home-page'>
       <h1 className="hero-title">HomePage</h1>
+      <GenderFilter/>
       <section className='grid-list flex-center'>
         {stores && stores.map((store) => {
           return store.Products.map(product => {
@@ -37,7 +39,7 @@ export function HomePage() {
               </div>
               <div className="product-details">
                 <h2 className='store-name'> {store.StoreName}</h2>
-                <h3 className='product-price'> ${product.Price}</h3>
+                <h3 className='product-price'> {product.PriceLabel}</h3>
                 <h3 className='product-name'> {product.ProductTitle}</h3>
               </div>
             </div>
