@@ -25,9 +25,10 @@ export function HomePage() {
 	if (!stores.length) return <div>Loading...</div>;
 	return (
 		<section className='home-page'>
-			<h1 className='hero-title'>HomePage</h1>
-			<GenderFilter />
-			<section className='grid-list flex-center'>
+			<section className='filters'>
+				<GenderFilter />
+			</section>
+			<main className='app-main grid-list flex-center'>
 				{stores &&
 					stores.map((store) => {
 						return store.Products.map((product) => {
@@ -37,15 +38,20 @@ export function HomePage() {
 										<img className='product-img' src={product.ProductImage} alt='' />
 									</div>
 									<div className='product-details'>
-										<h2 className='store-name'> {store.StoreName}</h2>
-										<h3 className='product-price'> {product.PriceLabel}</h3>
-										<h3 className='product-name'> {product.ProductTitle}</h3>
+										<h4 className='store-name'> {store.StoreName}</h4>
+										<h4 className='product-price'> {product.PriceLabel}</h4>
+										<h4 className='product-name'>
+											{' '}
+											{product.ProductTitle.length < 30
+												? product.ProductTitle
+												: product.ProductTitle.slice(0, 25) + '...'}
+										</h4>
 									</div>
 								</div>
 							);
 						});
 					})}
-			</section>
+			</main>
 		</section>
 	);
 }
