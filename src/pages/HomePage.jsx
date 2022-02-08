@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useLayoutEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, {useState, useEffect, useLayoutEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 
 import { CrudlService } from '../services/crudl.service.js';
 import { GenderFilter } from '../cmps/GenderFilter.jsx';
@@ -11,9 +11,12 @@ import {
 } from '../store/item.action.js';
 
 export function HomePage() {
-  const dispatch = useDispatch();
-  const { stores } = useSelector((state) => ({ stores: state.itemModule.stores }));
+	const dispatch = useDispatch();
+	const {stores} = useSelector((state) => ({stores: state.itemModule.stores}));
 
+	useEffect(() => {
+		getItems();
+	}, []);
 
   useEffect(async () => {
     await getItems();

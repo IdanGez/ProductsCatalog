@@ -1,23 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import logoSvg from '../assets/imgs/svg/applogo.svg';
 
 export function AppHeader() {
-  return (
-    <section className='app-header'>
-      <div className='app-header-layout'>
-        <section className='app-logo'>
-          <img src={logoSvg} alt='' />
-        </section>
-        <nav className='nav-links'>
-          <Link className='header-link' to='/'>
-            Home-Page
-          </Link>
-          <Link className='header-link' to='/secondpage'>
-            Second-Page
-          </Link>
-        </nav>
-      </div>
-    </section>
-  );
+	return (
+		<section className='app-header'>
+			<div className='app-header-layout'>
+				<section className='app-logo'>
+					<img src={logoSvg} alt='' />
+				</section>
+			</div>
+		</section>
+	);
 }
