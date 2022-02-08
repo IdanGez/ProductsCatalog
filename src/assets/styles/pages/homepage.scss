@@ -6,9 +6,9 @@
     font-size:40px;
   }
 
-  .item-preview {
-    width: 250px;
-    height: 350px;
+  .product-preview {
+    width: 400px;
+    height: 400px;
     background-color: rgb(209, 201, 201);
     border-radius: 15px;
     color:rgb(73, 55, 55);
@@ -16,6 +16,13 @@
     h2,h3 {
       display: flex;
       justify-content: center;
+    }
+    .product-img-container{
+      width: 50%
+
+    }
+    img {
+      width: 100%
     }
   }
 }
